@@ -28,8 +28,14 @@ app.get('/convert', (req, res) => {
     };
 
     axios.request(options).then((response) => {
-        res.json(response.data['Realtime Currency Exchange Rate']['5. Exchange Rate']);
-
+        // return response.json()
+        // console.log(typeof(response))
+        // console.log(response.data['Realtime Currency Exchange Rate']['5. Exchange Rate'])
+        const exchange = {
+            "exchange_rate": response.data['Realtime Currency Exchange Rate']['5. Exchange Rate']
+        }
+        res.json(exchange);
+        
     }).catch((error) => {
         console.error(error);
     });
